@@ -1,0 +1,8 @@
+{
+  "policy": "Only enable sources whose public API/terms permit this use.",
+  "sources": [
+    {"type": "greenhouse", "site": "cloudflare", "company": "Cloudflare"},
+    {"type": "greenhouse", "site": "figma", "company": "Figma"},
+    {"type": "greenhouse", "site": "datadog", "company": "Datadog"}
+  ]
+}

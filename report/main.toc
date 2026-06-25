@@ -1,0 +1,51 @@
+\babel@toc {vietnamese}{}\relax 
+\contentsline {chapter}{Lời cam kết}{i}{chapter*.1}%
+\contentsline {chapter}{Lời cảm ơn}{ii}{chapter*.2}%
+\contentsline {chapter}{Tóm tắt}{iii}{chapter*.3}%
+\contentsline {chapter}{Abstract}{iv}{chapter*.4}%
+\contentsline {chapter}{Danh mục công thức}{ix}{chapter*.8}%
+\contentsline {chapter}{Danh mục từ viết tắt}{x}{chapter*.9}%
+\contentsline {chapter}{\numberline {1}GIỚI THIỆU ĐỀ TÀI}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Đặt vấn đề}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Mục tiêu và phạm vi}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Định hướng giải pháp}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Đóng góp chính}{2}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Bố cục báo cáo}{2}{section.1.5}%
+\contentsline {chapter}{\numberline {2}KHẢO SÁT VÀ PHÂN TÍCH YÊU CẦU}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Khảo sát hiện trạng}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Tác nhân và chức năng}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Quy trình nghiệp vụ chính}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Yêu cầu phi chức năng}{5}{section.2.4}%
+\contentsline {chapter}{\numberline {3}CƠ SỞ LÝ THUYẾT VÀ CÔNG NGHỆ}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Mô hình ngôn ngữ lớn và embedding}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Retrieval-Augmented Generation}{6}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Truy hồi dense, lexical và hybrid}{6}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Chỉ mục HNSW}{7}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Xác thực và phân quyền}{7}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Công nghệ triển khai}{7}{section.3.6}%
+\contentsline {chapter}{\numberline {4}THIẾT KẾ VÀ XÂY DỰNG HỆ THỐNG}{8}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Kiến trúc tổng thể}{8}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Thiết kế dữ liệu}{8}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Thu thập và quản trị dữ liệu thật}{9}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Pipeline lập chỉ mục}{9}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Thuật toán truy hồi hybrid}{10}{section.4.5}%
+\contentsline {section}{\numberline {4.6}An toàn, độ tin cậy và khả năng quan sát}{10}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Thiết kế giao diện và API}{11}{section.4.7}%
+\contentsline {chapter}{\numberline {5}TRIỂN KHAI, THỬ NGHIỆM VÀ ĐÁNH GIÁ}{12}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Môi trường thực nghiệm}{12}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Phương pháp đánh giá retrieval}{12}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Kết quả retrieval}{13}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Kiểm thử phần mềm}{13}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Thảo luận và đe dọa tính hợp lệ}{14}{section.5.5}%
+\contentsline {chapter}{\numberline {6}KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Kết luận}{15}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Hạn chế}{15}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Hướng phát triển}{15}{section.6.3}%
+\contentsline {chapter}{Tài liệu tham khảo}{16}{chapter*.21}%
+\contentsline {chapter}{\numberline {A}HƯỚNG DẪN CÀI ĐẶT VÀ VẬN HÀNH}{17}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Khởi tạo môi trường}{17}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Chạy ứng dụng}{17}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Thu thập, ETL và indexing}{17}{section.A.3}%
+\contentsline {chapter}{\numberline {B}DANH SÁCH API CHÍNH}{18}{appendix.B}%
+\contentsline {chapter}{\numberline {C}CẤU TRÚC MÃ NGUỒN}{19}{appendix.C}%
+\contentsline {chapter}{\numberline {D}KỊCH BẢN KIỂM THỬ TIÊU BIỂU}{20}{appendix.D}%

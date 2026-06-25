@@ -1,0 +1,68 @@
+---
+job_code: "greenhouse-figma-5729844004"
+title: "Account Executive, SMB (Tokyo, Japan) "
+department: "Sales"
+job_family: "Sales"
+employment_type: ""
+location: "Tokyo, Japan"
+source_name: "greenhouse"
+source_external_id: "5729844004"
+source_company: "Figma"
+source_url: "https://boards.greenhouse.io/figma/jobs/5729844004?gh_jid=5729844004"
+source_published_at: "2026-04-15T19:32:40"
+source_fetched_at: "2026-06-24T14:07:24.249198"
+source_hash: "5d2e37fd0fc163da4e88590d4c99b350eaa1c660188975849f9f2fcd5161e1bf"
+tags: [real-data, public-job-posting]
+---
+
+# Account Executive, SMB (Tokyo, Japan) 
+
+- **Company:** Figma
+- **Location:** Tokyo, Japan
+- **Employment type:** Not specified
+- **Original posting:** https://boards.greenhouse.io/figma/jobs/5729844004?gh_jid=5729844004
+
+## Job description
+
+Figma is growing our team of passionate creatives and builders on a mission to make design accessible to all. Figma’s platform helps teams bring ideas to life—whether you're brainstorming, creating a prototype, translating designs into code, or iterating with AI. From idea to product, Figma empowers teams to streamline workflows, move faster, and work together in real time from anywhere in the world. If you're excited to shape the future of design and collaboration, join us!
+We are looking for an Account Executive, SMB who will play a critical role generating new business and fielding inbound prospects in their territory. You will be responsible for targeting, building and nurturing positive relationships with key decision-makers and assisting them through their Figma evaluation and buying process of all products. This is an opportunity to accelerate your career, learn from leading sellers in the industry and build an incredible network of cross functional partners at Figma.
+This is a full time role that will be held from our Tokyo Hub.
+What you’ll do at Figma:
+Create and manage a pipeline of SMB accounts from inbound and outbound activity to consistently meet or exceed quarterly and annual sales targets
+Apply effective discovery and value-selling techniques to build and strengthen relationships with key decision-makers in both new and existing customers (500< FTEs)
+Align with key decision makers to identify where Figma’s roadmap and innovations can solve business challenges
+Conduct thorough analysis to tier and prioritize accounts in large volumes
+Expertly position Figma and engage cross-functional partners where necessary to drive deals forward
+Leverage opportunities to advance relationships through in-person meetings and networking opportunities
+We'd love to hear from you if you have:
+Exposure to a structured sales or outbound program (sales experience as an SDR or AE)
+Exposure to closing sales for a software or SaaS business in an outbound function
+Consistent performance meeting pipeline generation targets for net new business
+Demonstrated experience successfully managing high volume sales cycles (1-3 months)
+Native-level Japanese
+While not required, it’s an added plus if you also have:
+Experience selling solutions to technical audiences (i.e. Engineering, Product, Design teams)
+Demonstrated ability to succeed in a changing environment
+Certified in deal qualification and prospect discovery
+At Figma, one of our values is Grow as you go. We believe in hiring smart, curious people who are excited to learn and develop their skills. If you’re excited about this role but your past experience doesn’t align perfectly with the points outlined in the job description, we encourage you to apply anyways. You may be just the right candidate for this or other roles.
+At Figma we celebrate and support our differences. We know employing a team rich in diverse thoughts, experiences, and opinions allows our employees, our product and our community to flourish. Figma is an
+equal opportunity workplace
+- we are dedicated to equal employment opportunities regardless of race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity/expression, veteran status
+,
+or any other characteristic protected by law. We also consider qualified applicants regardless of criminal histories, consistent with legal requirements.
+We will work to ensure individuals with disabilities are provided reasonable accommodation to apply for a role, participate in the interview process, perform essential job functions, and receive other benefits and privileges of employment. If you require accommodation, please reach out to
+accommodations-ext@figma.com
+. These modifications enable an individual with a disability to have an equal opportunity not only to get a job, but successfully perform their job tasks to the same extent as people without disabilities.
+Examples of accommodations include but are not limited to:
+Holding interviews in an accessible location
+Enabling closed captioning on video conferencing
+Ensuring all written communication be compatible with screen readers
+Changing the mode or format of interviews
+To ensure the integrity of our hiring process and facilitate a more personal connection, we require all candidates keep their cameras on during video interviews. Additionally, if hired you will be required to attend in person onboarding.
+By applying for this job, the candidate acknowledges and agrees that any personal data contained in their application or supporting materials will be processed in accordance with
+Figma's Candidate Privacy Notice
+.
+
+## Source and provenance
+
+Retrieved from the public greenhouse job feed on 2026-06-24T14:07:24.249198 UTC.

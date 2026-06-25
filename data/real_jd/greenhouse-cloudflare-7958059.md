@@ -1,0 +1,73 @@
+---
+job_code: "greenhouse-cloudflare-7958059"
+title: "Account Executive, SLED (Austin)"
+department: "Field Sales"
+job_family: "Field Sales"
+employment_type: ""
+location: "Distributed"
+source_name: "greenhouse"
+source_external_id: "7958059"
+source_company: "Cloudflare"
+source_url: "https://boards.greenhouse.io/cloudflare/jobs/7958059?gh_jid=7958059"
+source_published_at: "2026-06-19T18:39:05"
+source_fetched_at: "2026-06-24T14:07:22.619075"
+source_hash: "d8c3c6c2b0e6a922ec68800b49af9ec28160eb5fd3ce87cbedcaac91b0bbab4b"
+tags: [real-data, public-job-posting]
+---
+
+# Account Executive, SLED (Austin)
+
+- **Company:** Cloudflare
+- **Location:** Distributed
+- **Employment type:** Not specified
+- **Original posting:** https://boards.greenhouse.io/cloudflare/jobs/7958059?gh_jid=7958059
+
+## Job description
+
+About Us
+At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.
+At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.
+Available Location: Austin, TX
+About the Department
+Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.
+What you'll do
+We are looking for a seasoned sales professional to help us build a Public Sector Sales team to help cover the State and Local market for the territory. The ideal candidate will possess both a sales and technical background that enables them to drive engagement at all levels with technical and non-technical buyers.
+As an SLED Account Executive, you'll be responsible for developing and executing against a comprehensive account/territory plan as well as driving sales in a defined territory and/or account list to achieve revenue targets. The person in this role will also assist in creating and articulating compelling value propositions for Cloudflare services.
+Additional responsibilities will include:
+Manage contract negotiations
+Maintain a robust sales pipeline
+Develop long-term strategic relationships with key accounts.
+Examples of desirable skills, knowledge and experience
+Minimum 3 years of experience selling technical solutions or products to the Public Sector (SLED, Federal Government, Municipalities, etc.)
+Experience managing longer, complex sales cycles`
+Basic understanding of computer networking and “how the internet works”
+Aptitude for learning technical concepts/terms (Technical background in engineering, computer science, or MIS a plus)
+Strong interpersonal communication (verbal and written) and organizational skills.
+Self-motivated; entrepreneurial spirit
+Comfortable working in a fast paced dynamic environment
+Experience selling to SLED customer base
+What Makes Cloudflare Special?
+We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.
+Project Galileo
+: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.
+Athenian Project
+: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.
+1.1.1.1
+: We released
+1.1.1.1
+to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our
+privacy commitment
+and ensure that no user data is sold to advertisers or used to target consumers.
+Sound like something you’d like to be a part of? We’d love to hear from you!
+Please note that applicants who progress to the offer stage of the interview process may be asked to attend an in-person interview within one of the Cloudflare Offices or Cloudflare Hubs.  More details about this will be available at that stage of the interview process.
+This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.
+Cloudflare is proud to be an equal opportunity employer.  We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness.  All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual
+race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law.
+We are an AA/Veterans/Disabled Employer.
+Cloudflare provides reasonable accommodations to qualified individuals with disabilities.  Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment.  If you require a reasonable accommodation to apply for a job, please contact us via e-mail at
+hr@cloudflare.com
+or via mail at 101 Townsend St. San Francisco, CA 94107.
+
+## Source and provenance
+
+Retrieved from the public greenhouse job feed on 2026-06-24T14:07:22.619075 UTC.

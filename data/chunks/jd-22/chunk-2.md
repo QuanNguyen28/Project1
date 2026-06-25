@@ -1,0 +1,6 @@
+Data Intelligence & Analytics organization builds the core data platform and internal products that power decision-making across the company.
+We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams.
+Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.
+About the role
+We are looking for an experienced data scientist to join our Bangalore team and help scale the next generation of our AI/ML models.
+In this role, you will train predictive models and the workflows behind AI-driven applications, Agents, Chatbots that power teams across the company, including go-to-market, engineering, and product.
