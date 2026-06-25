@@ -1,34 +1,55 @@
 from __future__ import annotations
 
 import argparse
+
 import hashlib
+
 import json
+
 import re
+
 import sys
+
 from datetime import datetime, timezone
+
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
 if str(PROJECT_ROOT) not in sys.path:
+
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.ingestion.sources import GreenhouseSource, JobPosting, JsonLdSource, LeverSource
+from src.ingestion.sources import (
+    GreenhouseSource,
+    JobPosting,
+    JsonLdSource,
+    LeverSource,
+)
 
 
 def _slug(value: str, limit: int = 50) -> str:
+
     value = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+
     return (value or "job")[:limit]
 
 
 def _yaml_string(value: str) -> str:
+
     return json.dumps(value or "", ensure_ascii=False)
 
 
 def write_posting(posting: JobPosting, output_dir: Path) -> Path:
+
     output_dir.mkdir(parents=True, exist_ok=True)
+
     external_hash = hashlib.sha256(posting.external_id.encode("utf-8")).hexdigest()[:12]
+
     code = f"{_slug(f'{posting.source_name}-{posting.company}', 32)}-{external_hash}"
+
     fetched_at = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+
     metadata = [
         "---",
         f"job_code: {_yaml_string(code)}",
@@ -62,42 +83,79 @@ def write_posting(posting: JobPosting, output_dir: Path) -> Path:
         "",
         f"Retrieved from the public {posting.source_name} job feed on {fetched_at} UTC.",
     ]
+
     path = output_dir / f"{code}.md"
+
     path.write_text("\n".join(metadata).strip() + "\n", encoding="utf-8")
+
     return path
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Collect real public job postings with provenance")
-    parser.add_argument("--source", choices=("greenhouse", "lever", "jsonld"), required=True)
+
+    parser = argparse.ArgumentParser(
+        description="Collect real public job postings with provenance"
+    )
+
+    parser.add_argument(
+        "--source", choices=("greenhouse", "lever", "jsonld"), required=True
+    )
+
     parser.add_argument("--site", help="Greenhouse board token or Lever site name")
+
     parser.add_argument("--company", required=True)
-    parser.add_argument("--url", action="append", default=[], help="Explicit JSON-LD job page URL")
+
+    parser.add_argument(
+        "--url", action="append", default=[], help="Explicit JSON-LD job page URL"
+    )
+
     parser.add_argument("--limit", type=int, default=50)
+
     parser.add_argument("--delay", type=float, default=0.5)
+
     parser.add_argument("--output", default="data/real_jd")
+
     parser.add_argument("--region", choices=("global", "eu"), default="global")
+
     args = parser.parse_args()
 
     if args.source == "greenhouse":
+
         if not args.site:
+
             parser.error("--site is required for Greenhouse")
-        postings = GreenhouseSource(args.site, args.company, delay_seconds=args.delay).fetch(args.limit)
+
+        postings = GreenhouseSource(
+            args.site, args.company, delay_seconds=args.delay
+        ).fetch(args.limit)
+
     elif args.source == "lever":
+
         if not args.site:
+
             parser.error("--site is required for Lever")
+
         postings = LeverSource(
             args.site, args.company, region=args.region, delay_seconds=args.delay
         ).fetch(args.limit)
+
     else:
+
         if not args.url:
+
             parser.error("at least one --url is required for JSON-LD")
-        postings = JsonLdSource(args.company, delay_seconds=args.delay).fetch_urls(args.url, args.limit)
+
+        postings = JsonLdSource(args.company, delay_seconds=args.delay).fetch_urls(
+            args.url, args.limit
+        )
 
     paths = [write_posting(posting, PROJECT_ROOT / args.output) for posting in postings]
+
     print(f"Collected {len(paths)} real postings in {PROJECT_ROOT / args.output}")
+
     return 0
 
 
 if __name__ == "__main__":
+
     raise SystemExit(main())

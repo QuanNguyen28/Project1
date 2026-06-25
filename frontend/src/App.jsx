@@ -25,15 +25,12 @@ export default function App() {
           }
         >
           <Routes>
-            {/* Public */}
             <Route path="/login" element={<LoginPage />} />
 
-            {/* Private area */}
-            <Route element={<ProtectedRoute />}> 
-              <Route path="/" element={<Layout />}> 
-                {/* default landing */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<Layout />}>
                 <Route index element={<Dashboard />} />
-                {/* explicit alias */}
+
                 <Route path="dashboard" element={<Dashboard />} />
 
                 <Route path="compose" element={<ComposePage />} />
@@ -41,12 +38,10 @@ export default function App() {
                 <Route path="retrieve" element={<RetrievePage />} />
                 <Route path="roles" element={<Roles />} />
 
-                {/* in-layout 404 */}
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Route>
 
-            {/* top-level fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>

@@ -72,7 +72,7 @@ export default function Sidebar() {
       { to: "/retrieve", icon: Search, label: "Retrieve" },
       { to: "/roles", icon: UsersRound, label: "Roles" },
     ],
-    []
+    [],
   );
 
   const logout = () => {
@@ -83,7 +83,6 @@ export default function Sidebar() {
 
   return (
     <div className="sticky top-0 flex h-screen w-[320px] flex-col border-r border-white/5 bg-[radial-gradient(1200px_600px_at_-200px_-200px,rgba(99,102,241,0.10),transparent_40%),linear-gradient(#0b1220,#0b1220)] px-4 py-5 text-slate-100 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.02)]">
-      {/* Brand */}
       <div className="mb-5 flex items-center gap-3 px-1">
         <div className="relative">
           <span className="inline-block h-6 w-6 rounded-md bg-indigo-500 shadow-md" />
@@ -91,17 +90,18 @@ export default function Sidebar() {
           <span className="relative -ml-1 inline-block h-6 w-6 rounded-full bg-white/90 shadow-md ring-2 ring-indigo-900/40" />
         </div>
         <div className="leading-tight">
-          <div className="text-[15px] font-extrabold tracking-tight">SmartHire</div>
+          <div className="text-[15px] font-extrabold tracking-tight">
+            SmartHire
+          </div>
           <div className="text-[12px] text-slate-400">@Composer</div>
         </div>
       </div>
 
-      {/* Search hint (visual balance) */}
       <div className="mb-4 hidden rounded-xl border border-white/5 bg-white/[0.03] px-3 py-2 text-[12.5px] text-slate-300/80 backdrop-blur-sm lg:block">
-        Press <kbd className="rounded bg-white/10 px-1.5 py-0.5">/</kbd> to search
+        Press <kbd className="rounded bg-white/10 px-1.5 py-0.5">/</kbd> to
+        search
       </div>
 
-      {/* Navigation */}
       <div className="flex-1 space-y-5 overflow-y-auto pr-1">
         <div>
           <SectionTitle>Main</SectionTitle>
@@ -141,7 +141,6 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="mt-4 border-t border-white/5 pt-3 text-[11.5px] text-slate-400/70">
         v1.0 • Neumorphism
       </div>

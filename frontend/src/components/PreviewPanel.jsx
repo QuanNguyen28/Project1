@@ -1,7 +1,6 @@
-// src/components/PreviewPanel.jsx
-import React, { useMemo } from 'react'
-import { marked } from 'marked'
-import DOMPurify from 'dompurify'
+import React, { useMemo } from "react";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 import {
   BriefcaseBusiness,
   Building2,
@@ -10,56 +9,62 @@ import {
   Globe2,
   MapPin,
   Sparkles,
-} from 'lucide-react'
+} from "lucide-react";
 
 marked.setOptions({
   breaks: true,
   gfm: true,
   headerIds: false,
   mangle: false,
-})
+});
 
-function stripFirstHeading(markdown = '') {
-  return markdown.replace(/^\s*#\s+.+(?:\r?\n)+/, '').trim()
+function stripFirstHeading(markdown = "") {
+  return markdown.replace(/^\s*#\s+.+(?:\r?\n)+/, "").trim();
 }
 
-function pickTitle(markdown = '', fallback = '') {
-  const firstHeading = markdown.match(/^\s*#\s+(.+?)\s*$/m)?.[1]
-  return (fallback || firstHeading || 'Job Description').trim()
+function pickTitle(markdown = "", fallback = "") {
+  const firstHeading = markdown.match(/^\s*#\s+(.+?)\s*$/m)?.[1];
+  return (fallback || firstHeading || "Job Description").trim();
 }
 
-function isProbablyEmpty(markdown = '') {
-  return !markdown || !markdown.trim()
+function isProbablyEmpty(markdown = "") {
+  return !markdown || !markdown.trim();
 }
 
 function MetaChip({ icon: Icon, children }) {
-  if (!children) return null
+  if (!children) return null;
   return (
     <span className="jd-meta-chip">
       <Icon className="size-3.5" />
       {children}
     </span>
-  )
+  );
 }
 
-export default function PreviewPanel({ markdown, jd, title, meta = {}, className = '' }) {
-  const empty = isProbablyEmpty(markdown)
-  const headerTitle = pickTitle(markdown, title || jd?.title)
+export default function PreviewPanel({
+  markdown,
+  jd,
+  title,
+  meta = {},
+  className = "",
+}) {
+  const empty = isProbablyEmpty(markdown);
+  const headerTitle = pickTitle(markdown, title || jd?.title);
 
   const html = useMemo(() => {
-    if (empty) return ''
-    const withoutDuplicateTitle = stripFirstHeading(markdown)
-    const raw = marked.parse(withoutDuplicateTitle || markdown || '')
+    if (empty) return "";
+    const withoutDuplicateTitle = stripFirstHeading(markdown);
+    const raw = marked.parse(withoutDuplicateTitle || markdown || "");
     return DOMPurify.sanitize(raw, {
       USE_PROFILES: { html: true },
-      ADD_ATTR: ['target', 'rel'],
-    })
-  }, [markdown, empty])
+      ADD_ATTR: ["target", "rel"],
+    });
+  }, [markdown, empty]);
 
   const wordCount = useMemo(() => {
-    if (empty) return 0
-    return markdown.trim().split(/\s+/).filter(Boolean).length
-  }, [markdown, empty])
+    if (empty) return 0;
+    return markdown.trim().split(/\s+/).filter(Boolean).length;
+  }, [markdown, empty]);
 
   return (
     <article className={`jd-preview-shell ${className}`}>
@@ -90,7 +95,9 @@ export default function PreviewPanel({ markdown, jd, title, meta = {}, className
             <MetaChip icon={ClipboardCheck}>{meta.level}</MetaChip>
             <MetaChip icon={FileText}>{meta.employmentType}</MetaChip>
             <MetaChip icon={MapPin}>{meta.location}</MetaChip>
-            <MetaChip icon={Globe2}>{meta.language === 'vi' ? 'Tiếng Việt' : 'English'}</MetaChip>
+            <MetaChip icon={Globe2}>
+              {meta.language === "vi" ? "Tiếng Việt" : "English"}
+            </MetaChip>
           </div>
         </header>
 
@@ -101,8 +108,9 @@ export default function PreviewPanel({ markdown, jd, title, meta = {}, className
             </div>
             <h2>Preview sẽ hiển thị tại đây</h2>
             <p>
-              Nhập Markdown hoặc bấm Generate để tạo một JD có bố cục giống bản đăng tuyển thật:
-              tiêu đề rõ, thông tin vai trò, trách nhiệm, yêu cầu và quyền lợi.
+              Nhập Markdown hoặc bấm Generate để tạo một JD có bố cục giống bản
+              đăng tuyển thật: tiêu đề rõ, thông tin vai trò, trách nhiệm, yêu
+              cầu và quyền lợi.
             </p>
           </div>
         ) : (
@@ -113,5 +121,5 @@ export default function PreviewPanel({ markdown, jd, title, meta = {}, className
         )}
       </div>
     </article>
-  )
+  );
 }

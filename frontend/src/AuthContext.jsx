@@ -1,5 +1,10 @@
-// src/AuthContext.jsx
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import api from "./api";
 
 const AuthCtx = createContext(null);
@@ -10,7 +15,6 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Khôi phục token ngay lập tức -> tránh bị redirect sớm
   useEffect(() => {
     const t = localStorage.getItem("access_token");
     if (t) {
@@ -35,7 +39,6 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = useCallback(async (username, password) => {
-    // FastAPI OAuth2 (x-www-form-urlencoded)
     const form = new URLSearchParams();
     form.append("username", username);
     form.append("password", password);

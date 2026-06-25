@@ -1,8 +1,7 @@
-// src/pages/LoginPage.jsx
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-import LoginForm from "../components/LoginForm"; // form của bạn nhận onSubmit(username, password)
+import LoginForm from "../components/LoginForm";
 
 export default function LoginPage() {
   const { login, isAuthenticated } = useAuth();

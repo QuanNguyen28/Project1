@@ -1,1 +1,3 @@
-import bcrypt; print(bcrypt.hashpw(b"alice123456@", bcrypt.gensalt()).decode())
+import bcrypt
+
+print(bcrypt.hashpw(b"alice123456@", bcrypt.gensalt()).decode())

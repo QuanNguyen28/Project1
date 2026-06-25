@@ -12,7 +12,11 @@ export default function RetrievePage() {
   async function run() {
     setLoading(true);
     try {
-      const { data } = await api.post("/v1/retrieve", { query, top_k: topK, mode });
+      const { data } = await api.post("/v1/retrieve", {
+        query,
+        top_k: topK,
+        mode,
+      });
       setRows(data || []);
     } catch (e) {
       console.error(e);
@@ -45,13 +49,25 @@ export default function RetrievePage() {
             value={topK}
             onChange={(e) => setTopK(Number(e.target.value))}
           />
-          <select className="input" value={mode} onChange={(e) => setMode(e.target.value)}>
+          <select
+            className="input"
+            value={mode}
+            onChange={(e) => setMode(e.target.value)}
+          >
             <option value="hybrid">Hybrid (Dense + Lexical)</option>
             <option value="dense">Dense (COSINE)</option>
             <option value="lexical">Lexical (PostgreSQL FTS)</option>
           </select>
-          <button className="btn btn-primary" onClick={run} disabled={loading || !query}>
-            {loading ? <RefreshCcw className="size-4 animate-spin" /> : "Search"}
+          <button
+            className="btn btn-primary"
+            onClick={run}
+            disabled={loading || !query}
+          >
+            {loading ? (
+              <RefreshCcw className="size-4 animate-spin" />
+            ) : (
+              "Search"
+            )}
           </button>
         </div>
       </section>
@@ -72,13 +88,20 @@ export default function RetrievePage() {
           <tbody>
             {rows.map((r, i) => (
               <tr key={i} className="border-t border-[var(--ring)]">
-                <Td className="font-mono">{r.score?.toFixed?.(4) ?? r.distance?.toFixed?.(4) ?? "-"}</Td>
+                <Td className="font-mono">
+                  {r.score?.toFixed?.(4) ?? r.distance?.toFixed?.(4) ?? "-"}
+                </Td>
                 <Td>{r.retrieval_method || mode}</Td>
                 <Td>{r.jd_id ?? "-"}</Td>
                 <Td>
                   <div className="font-medium">{r.company || "-"}</div>
                   {r.source_url ? (
-                    <a className="text-[var(--brand)] hover:underline" href={r.source_url} target="_blank" rel="noreferrer">
+                    <a
+                      className="text-[var(--brand)] hover:underline"
+                      href={r.source_url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       {r.title || "Original posting"}
                     </a>
                   ) : (
@@ -96,7 +119,9 @@ export default function RetrievePage() {
             ))}
             {!rows.length && (
               <tr>
-                <Td colSpan={7} className="text-[var(--muted)]">No results.</Td>
+                <Td colSpan={7} className="text-[var(--muted)]">
+                  No results.
+                </Td>
               </tr>
             )}
           </tbody>
@@ -107,8 +132,16 @@ export default function RetrievePage() {
 }
 
 function Th({ children }) {
-  return <th className="px-4 py-2 text-xs font-semibold text-[var(--muted)]">{children}</th>;
+  return (
+    <th className="px-4 py-2 text-xs font-semibold text-[var(--muted)]">
+      {children}
+    </th>
+  );
 }
 function Td({ children, className = "", ...rest }) {
-  return <td className={`px-4 py-2 ${className}`} {...rest}>{children}</td>;
+  return (
+    <td className={`px-4 py-2 ${className}`} {...rest}>
+      {children}
+    </td>
+  );
 }

@@ -23,7 +23,7 @@ export default function Roles() {
     setLoading(true);
     try {
       const { data } = await api.get("/v1/roles/list");
-      // API trả dạng [{role_name, description?}]
+
       setRoles(Array.isArray(data) ? data : []);
     } catch (e) {
       setErr(e?.response?.data?.detail || e.message || "Failed to load roles");
@@ -42,13 +42,12 @@ export default function Roles() {
     return roles.filter(
       (r) =>
         r.role_name?.toLowerCase().includes(term) ||
-        r.description?.toLowerCase().includes(term)
+        r.description?.toLowerCase().includes(term),
     );
   }, [roles, q]);
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="neo aspect-square w-11 flex items-center justify-center rounded-xl">
@@ -83,7 +82,6 @@ export default function Roles() {
         </div>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="neo p-4 rounded-xl">
           <div className="text-xs text-[var(--muted)]">Total roles</div>
@@ -95,11 +93,12 @@ export default function Roles() {
         </div>
         <div className="neo p-4 rounded-xl">
           <div className="text-xs text-[var(--muted)]">Search</div>
-          <div className="text-2xl font-semibold mt-1">{q ? `"${q}"` : "—"}</div>
+          <div className="text-2xl font-semibold mt-1">
+            {q ? `"${q}"` : "—"}
+          </div>
         </div>
       </div>
 
-      {/* Error state */}
       {err && (
         <div className="neo p-4 rounded-xl border border-red-500/20 bg-red-500/5 text-red-300 flex items-center gap-2">
           <AlertCircle className="size-5" />
@@ -107,7 +106,6 @@ export default function Roles() {
         </div>
       )}
 
-      {/* List */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {Array.from({ length: 6 }).map((_, i) => (

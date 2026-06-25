@@ -19,9 +19,7 @@ export default function NeumorphicCard({
         <div className="mb-4 flex items-center justify-between">
           <div>
             {title && <h3 className="text-lg font-semibold">{title}</h3>}
-            {subtitle && (
-              <p className="text-sm text-muted mt-1">{subtitle}</p>
-            )}
+            {subtitle && <p className="text-sm text-muted mt-1">{subtitle}</p>}
           </div>
           {actions && <div className="flex gap-2">{actions}</div>}
         </div>

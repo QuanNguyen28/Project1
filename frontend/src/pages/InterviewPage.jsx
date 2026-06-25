@@ -48,21 +48,41 @@ export default function InterviewPage() {
         </div>
 
         <Field label="Title">
-          <input className="input" value={form.title} onChange={(e) => onChange("title", e.target.value)} />
+          <input
+            className="input"
+            value={form.title}
+            onChange={(e) => onChange("title", e.target.value)}
+          />
         </Field>
         <div className="grid grid-cols-2 gap-3">
           <Field label="Level">
-            <input className="input" value={form.level} onChange={(e) => onChange("level", e.target.value)} />
+            <input
+              className="input"
+              value={form.level}
+              onChange={(e) => onChange("level", e.target.value)}
+            />
           </Field>
           <Field label="Department">
-            <input className="input" value={form.department} onChange={(e) => onChange("department", e.target.value)} />
+            <input
+              className="input"
+              value={form.department}
+              onChange={(e) => onChange("department", e.target.value)}
+            />
           </Field>
         </div>
         <Field label="Focus (comma separated)">
           <input
             className="input"
             placeholder="e.g. system design, API, culture"
-            onChange={(e) => onChange("focus", e.target.value.split(",").map((x) => x.trim()).filter(Boolean))}
+            onChange={(e) =>
+              onChange(
+                "focus",
+                e.target.value
+                  .split(",")
+                  .map((x) => x.trim())
+                  .filter(Boolean),
+              )
+            }
           />
         </Field>
         <div className="grid grid-cols-2 gap-3">
@@ -77,7 +97,11 @@ export default function InterviewPage() {
             />
           </Field>
           <Field label="Language">
-            <select className="input" value={form.language} onChange={(e) => onChange("language", e.target.value)}>
+            <select
+              className="input"
+              value={form.language}
+              onChange={(e) => onChange("language", e.target.value)}
+            >
               <option value="vi">Vietnamese</option>
               <option value="en">English</option>
             </select>
@@ -99,7 +123,11 @@ export default function InterviewPage() {
         </div>
 
         <div className="pt-3">
-          <button className="btn btn-primary w-full" onClick={generate} disabled={loading}>
+          <button
+            className="btn btn-primary w-full"
+            onClick={generate}
+            disabled={loading}
+          >
             {loading ? <Loader2 className="size-4 animate-spin" /> : "Generate"}
           </button>
         </div>
@@ -107,13 +135,19 @@ export default function InterviewPage() {
 
       <section className="col-span-12 xl:col-span-8 neo p-5">
         <div className="font-semibold mb-3">Questions</div>
-        {!questions.length && <div className="text-[var(--muted)] text-sm">No questions yet.</div>}
+        {!questions.length && (
+          <div className="text-[var(--muted)] text-sm">No questions yet.</div>
+        )}
         <ol className="space-y-4">
           {questions.map((q, i) => (
             <li key={i} className="neo-soft p-4">
               <div className="flex items-center justify-between">
-                <div className="text-sm uppercase tracking-wide text-[var(--muted)]">{q.type || "general"}</div>
-                <div className="text-xs chip">{q.competency || "—"} • {q.difficulty || "—"}</div>
+                <div className="text-sm uppercase tracking-wide text-[var(--muted)]">
+                  {q.type || "general"}
+                </div>
+                <div className="text-xs chip">
+                  {q.competency || "—"} • {q.difficulty || "—"}
+                </div>
               </div>
               <div className="mt-2 font-medium">{q.question || q.text}</div>
               {q.rubric && (

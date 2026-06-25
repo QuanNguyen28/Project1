@@ -1,18 +1,16 @@
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState } from "react";
 import api from "../api";
-import { FileText, Save, History, Download, Wand2, Lightbulb, ChevronDown, ChevronRight } from "lucide-react";
+import {
+  FileText,
+  Save,
+  History,
+  Download,
+  Wand2,
+  ChevronDown,
+  ChevronRight,
+} from "lucide-react";
 import PreviewPanel from "../components/PreviewPanel";
 
-
-/**
- * ComposePage
- * - Generate JD
- * - Live edit (Markdown)
- * - Improve JD (LLM)
- * - Version history
- * - Export PDF/DOCX
- * - AI Suggestions (click to insert at cursor)
- */
 export default function ComposePage() {
   const [form, setForm] = useState({
     title: "",
@@ -23,7 +21,6 @@ export default function ComposePage() {
     location: "",
   });
 
-  // Language control
   const [lang, setLang] = useState("vi");
 
   const [loading, setLoading] = useState(false);
@@ -33,18 +30,13 @@ export default function ComposePage() {
   const [versions, setVersions] = useState([]);
   const [exporting, setExporting] = useState(false);
 
-  // --- AI Suggestion state ---
   const [suggesting, setSuggesting] = useState(false);
-  const [suggestMode, setSuggestMode] = useState("outline"); // outline | bullets | rewrite
+  const [suggestMode, setSuggestMode] = useState("outline");
   const [suggestions, setSuggestions] = useState([]);
   const [suggOpen, setSuggOpen] = useState(true);
 
   const onChange = (k, v) => setForm((s) => ({ ...s, [k]: v }));
 
-  // Add language header for backend
-  const headersWithLang = useMemo(() => ({ "X-Gen-Lang": lang }), [lang]);
-
-  // --- Textarea ref for insert-at-caret ---
   const editorRef = useRef(null);
   const insertAtCaret = (text) => {
     const el = editorRef.current;
@@ -56,9 +48,10 @@ export default function ComposePage() {
     const end = el.selectionEnd ?? content.length;
     const before = content.slice(0, start);
     const after = content.slice(end);
-    const next = (before ? before + "\n" : "") + text + (after ? "\n" + after : "");
+    const next =
+      (before ? before + "\n" : "") + text + (after ? "\n" + after : "");
     setContent(next);
-    // restore caret near inserted block
+
     requestAnimationFrame(() => {
       el.focus();
       const caret = (before ? before.length + 1 : 0) + text.length + 1;
@@ -74,9 +67,8 @@ export default function ComposePage() {
       setJdId(data.jd_id);
       setVersion(data.version);
       setContent(data.content_md || "");
-      setSuggestions([]); // clear old suggs
+      setSuggestions([]);
 
-      // load history
       const his = await api.get(`/v1/jd/version-history/${data.jd_id}`);
       setVersions(his.data || []);
     } catch (e) {
@@ -91,13 +83,14 @@ export default function ComposePage() {
     if (!jdId) return;
     setLoading(true);
     try {
-      await api.put(
-        "/v1/jd/update",
-        { jd_id: jdId, content_md: content, change_summary: "manual edit" }
-      );
+      await api.put("/v1/jd/update", {
+        jd_id: jdId,
+        content_md: content,
+        change_summary: "manual edit",
+      });
       const his = await api.get(`/v1/jd/version-history/${jdId}`);
       setVersions(his.data || []);
-      // optimistic: if BE returns nothing, bump local
+
       setVersion((v) => (v ? v + 1 : 2));
     } catch (e) {
       console.error(e);
@@ -140,19 +133,19 @@ export default function ComposePage() {
     }
   }
 
-  // --- Improve (LLM) ---
   async function improveJD() {
     if (!content.trim()) return;
     setLoading(true);
     try {
       const payload = {
         content_md: content,
-        instruction: "Polish for clarity, keep Markdown, concise and consistent tone.",
+        instruction:
+          "Polish for clarity, keep Markdown, concise and consistent tone.",
         language: lang,
       };
       const { data } = await api.post("/v1/jd/improve", payload);
       if (data?.content_md) setContent(data.content_md);
-      // version may or may not be returned; refresh history if we have a jdId
+
       if (jdId) {
         const his = await api.get(`/v1/jd/version-history/${jdId}`);
         setVersions(his.data || []);
@@ -165,21 +158,20 @@ export default function ComposePage() {
     }
   }
 
-  // Normalize various backend shapes into a string[] of bullets
   function normalizeBullets(payload) {
     if (!payload) return [];
-    // direct array
+
     if (Array.isArray(payload)) {
       return payload.map((s) => String(s).trim()).filter(Boolean);
     }
-    // common wrapped keys
+
     if (Array.isArray(payload.bullets)) {
       return payload.bullets.map((s) => String(s).trim()).filter(Boolean);
     }
     if (Array.isArray(payload.suggestions)) {
       return payload.suggestions.map((s) => String(s).trim()).filter(Boolean);
     }
-    // text-like fields
+
     let text = "";
     if (typeof payload === "string") text = payload;
     else if (typeof payload.text === "string") text = payload.text;
@@ -189,18 +181,15 @@ export default function ComposePage() {
     text = String(text || "");
     if (!text) return [];
 
-    // split lines, strip leading bullets/dots, remove empties
     return text
       .split(/\r?\n+/)
       .map((line) => line.replace(/^\s*[-*•]\s?/, "").trim())
       .filter(Boolean);
   }
 
-  // --- Suggest (LLM) ---
   async function fetchSuggestions() {
     setSuggesting(true);
     try {
-      // ensure panel is open so user sees results
       setSuggOpen(true);
 
       let section = "Responsibilities";
@@ -210,7 +199,8 @@ export default function ComposePage() {
         goal = "Propose a clean JD outline (headings) that fits this role.";
       } else if (suggestMode === "rewrite") {
         section = "Summary";
-        goal = "Rewrite the summary for clarity and impact (3–5 short paragraphs).";
+        goal =
+          "Rewrite the summary for clarity and impact (3–5 short paragraphs).";
       }
 
       const payload = {
@@ -218,22 +208,19 @@ export default function ComposePage() {
         section,
         goal,
         language: lang,
-        chunks_text: null, // optionally pass RAG context here
+        chunks_text: null,
       };
 
       const { data } = await api.post("/v1/jd/suggest", payload);
       const bullets = normalizeBullets(data);
       setSuggestions(bullets);
 
-      // If nothing returned, show a gentle hint instead of blank area
       if (!bullets.length) {
         console.warn("Suggest API returned no items. Raw payload:", data);
       }
     } catch (e) {
       console.error(e);
-      setSuggestions([
-        "⚠️ Could not fetch suggestions. Please try again.",
-      ]);
+      setSuggestions(["⚠️ Could not fetch suggestions. Please try again."]);
       alert(e?.response?.data?.detail || "Suggest failed");
     } finally {
       setSuggesting(false);
@@ -242,7 +229,6 @@ export default function ComposePage() {
 
   return (
     <div className="grid grid-cols-12 gap-6">
-      {/* Left: Form & actions */}
       <section className="col-span-12 xl:col-span-4 neo p-5 space-y-4">
         <div className="flex items-center gap-2">
           <FileText className="size-5 text-[var(--brand)]" />
@@ -315,15 +301,27 @@ export default function ComposePage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
-          <button className="btn btn-primary" onClick={generateJD} disabled={loading}>
+          <button
+            className="btn btn-primary"
+            onClick={generateJD}
+            disabled={loading}
+          >
             {loading ? "Generating…" : "Generate"}
           </button>
 
-          <button className="btn" onClick={saveNewVersion} disabled={!jdId || loading}>
+          <button
+            className="btn"
+            onClick={saveNewVersion}
+            disabled={!jdId || loading}
+          >
             <Save className="size-4" /> Save version
           </button>
 
-          <button className="btn" onClick={improveJD} disabled={loading || !content.trim()}>
+          <button
+            className="btn"
+            onClick={improveJD}
+            disabled={loading || !content.trim()}
+          >
             <Wand2 className="size-4" /> Improve
           </button>
 
@@ -342,7 +340,8 @@ export default function ComposePage() {
               disabled={!jdId || exporting}
               title={!jdId ? "Generate or load a JD first" : "Export as DOCX"}
             >
-              <Download className="size-4" /> {exporting ? "Exporting…" : "DOCX"}
+              <Download className="size-4" />{" "}
+              {exporting ? "Exporting…" : "DOCX"}
             </button>
           </div>
         </div>
@@ -359,7 +358,11 @@ export default function ComposePage() {
           <ul className="space-y-1 text-sm max-h-56 overflow-auto pr-1">
             {(versions || []).map((v) => {
               const when =
-                v.edited_at || v.updated_at || v.created_at || v.timestamp || null;
+                v.edited_at ||
+                v.updated_at ||
+                v.created_at ||
+                v.timestamp ||
+                null;
               return (
                 <li
                   key={`${v.version_number}-${when || v.version_number}`}
@@ -369,18 +372,20 @@ export default function ComposePage() {
                   <span className="text-[var(--muted)]">
                     {when ? new Date(when).toLocaleString() : "-"}
                   </span>
-                  <span className="text-[var(--muted)]">{v.edited_by || v.updated_by || "-"}</span>
+                  <span className="text-[var(--muted)]">
+                    {v.edited_by || v.updated_by || "-"}
+                  </span>
                 </li>
               );
             })}
-            {!versions?.length && <li className="text-[var(--muted)]">No history yet.</li>}
+            {!versions?.length && (
+              <li className="text-[var(--muted)]">No history yet.</li>
+            )}
           </ul>
         </div>
       </section>
 
-      {/* Right: Editor + Preview + Suggestions */}
       <section className="col-span-12 xl:col-span-8 flex flex-col gap-6">
-        {/* Editor & Preview */}
         <div className="neo p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col">
             <div className="text-sm text-[var(--muted)] mb-2">Markdown</div>
@@ -413,7 +418,6 @@ export default function ComposePage() {
           </div>
         </div>
 
-        {/* AI Suggestions (collapsible, fixed height) */}
         <div className="neo p-4">
           <button
             type="button"
@@ -437,7 +441,11 @@ export default function ComposePage() {
                 <option value="bullets">Bullets</option>
                 <option value="rewrite">Rewrite</option>
               </select>
-              <button className="btn" onClick={fetchSuggestions} disabled={suggesting}>
+              <button
+                className="btn"
+                onClick={fetchSuggestions}
+                disabled={suggesting}
+              >
                 {suggesting ? "Generating…" : "Generate"}
               </button>
             </div>
@@ -447,7 +455,8 @@ export default function ComposePage() {
             <div className="mt-3 grid md:grid-cols-2 gap-3 max-h-[320px] overflow-auto pr-1">
               {suggestions.length === 0 && !suggesting && (
                 <div className="text-sm text-[var(--muted)]">
-                  Select a mode and click <b>Generate</b> to receive contextual suggestions based on the current content.
+                  Select a mode and click <b>Generate</b> to receive contextual
+                  suggestions based on the current content.
                 </div>
               )}
               {suggestions.map((s, idx) => (
@@ -455,7 +464,9 @@ export default function ComposePage() {
                   key={`${idx}-${s.slice(0, 16)}`}
                   className="neo-soft p-3 hover:shadow-sm transition text-[var(--fg)]"
                 >
-                  <pre className="whitespace-pre-wrap text-sm text-[var(--fg)]">{s}</pre>
+                  <pre className="whitespace-pre-wrap text-sm text-[var(--fg)]">
+                    {s}
+                  </pre>
                   <div className="text-right mt-2">
                     <button className="btn" onClick={() => insertAtCaret(s)}>
                       Insert
